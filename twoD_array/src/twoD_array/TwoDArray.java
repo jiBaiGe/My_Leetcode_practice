@@ -16,7 +16,7 @@ public class TwoDArray {
       
     }
 	
-	//因为是排序完成的二维数组，所以可以借鉴二分查找的思路
+	//因为是排序完成的二维数组，可以通过排来快速定位。
 	public static boolean Find2(int target, int [][] array) {
 		for(int i = 0; target > array[0][i];i++) {
 		  if(target == array[0][i]) {return true;}
