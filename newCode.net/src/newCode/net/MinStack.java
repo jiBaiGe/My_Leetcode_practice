@@ -17,7 +17,19 @@ public class MinStack {
 	    }
 	    
 	    public int top() {
-	        return 0;
+	    	int [] a = new int [stack.size()];
+	    	
+	    	for(int i= 0 ;i < a.length;i++) {
+	    		a[i] = stack.pop();
+	    	}
+	    	int max = a[0];
+	    	for(int j = 0 ; j < a.length; j++) {
+	    		max = (a[j] > max)?a[j]:max;
+	    	}
+	    	for(int k = a.length-1;k>=0 ;k--) {
+	    		stack.push(a[k]);
+	    	}
+	        return max;
 	    }
 	    
 	    //第一种方法，借用外部数组。
@@ -52,6 +64,7 @@ public class MinStack {
 		System.out.println(ms.min());
 		ms.pop();
 		System.out.println(ms.min());
+		System.out.println(ms.top());
 	}
 
 }
