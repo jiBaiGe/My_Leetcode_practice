@@ -2,8 +2,15 @@ package palindrome;
 
 public class Palindrome {
 	
+	public static boolean isSame (char c1,char c2) {
+		int i = (int)c1;
+		int j = (int)c2;
+		if(i == j|| i-j == 32 || j-i == 32) {return true;}
+		return false;
+	}
+	
 	  public static boolean isPunctuation (char i ) {
-		  String s = ",.?':!;";
+		  String s = ",.?':!;"+" ";
 		  for(int k = 0 ;k < s.length();k++) {
 			  if(s.charAt(k) == i) {return true;}
 		  }
@@ -20,13 +27,15 @@ public class Palindrome {
 	        		mys.deleteCharAt(i--);   //因为删除标点后字符串下标发生变化，所以删除后i--。      		
 	        	}
 	          }
-	        	String sss = mys.toString();
-	        	String ss = mys.reverse().toString();
-	        	
-	        		if(ss.equals(sss)) {
-	        			return true;
+	        	int i = 0,j = mys.length();
+	        	while (i <  j) {
+	        		if(!isSame(mys.charAt(i),mys.charAt(j))) {
+	        			return false;
+	        		}
+	        		i++;j--;
 	        	}
-	        return false;
+	       
+	        return true;
 	    }
 
 	public static void main(String[] args) {
